@@ -1,0 +1,63 @@
+input[type=text], input[type=email], input[type=search], textarea, select {
+    background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: solid 2px #29e;
+    border-radius: 2px;
+    display: inline-block;
+    font-family: Karbon,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0 10 0 0;
+    padding: 10px 15px;
+    transition: background-color 300ms ease,border-color 300ms ease;
+}
+
+.inputUrl #file{
+  width: 80%;
+  margin: auto;
+}
+
+.inputUrl{
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.inputUrl button{
+  width: 19%;
+  background-color: #29e;
+  padding: 10px 15px;
+  float: right;
+  margin: auto;
+}
+
+.button{
+  background-color: #aab4c8;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Karbon,Arial,sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    line-height: normal;
+    margin: 0 auto;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 150ms ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+    width: auto;
+    overflow: visible;
+    text-indent: 0px;
+    text-shadow: none;
+    text-rendering: auto;
+}

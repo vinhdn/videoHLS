@@ -2,47 +2,80 @@
 <html itemscope="itemscope" itemtype="http://schema.org/VideoObject">
   <head>
     <link rel="stylesheet" type="text/css" href="css/player.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="image_src" href="https://i-xem.mkocdn.com/i.xem.sb/data/video/thumbnails/2016/11/16/029/thumbnail-1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.png">
     <meta property="og:image" content="https://i-xem.mkocdn.com/i.xem.sb/data/video/thumbnails/2016/11/16/029/thumbnail-1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.png">
     <meta itemprop="thumbnailUrl" content="https://i-xem.mkocdn.com/i.xem.sb/data/video/thumbnails/2016/11/16/029/thumbnail-1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.png">
   </head>
   <body>
+    <div class="inputUrl">
+      <input id="file" type="text" placeholder="Enter a stream URL" value="https://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8">
+      <button class="button play" id="play">Open</button>
+    </div>
     <div id="video-hls"></div>
     <script src="js/jquery-1.7.min.js"></script>
     <script src="js/jwplayer.js"></script>
     <script src="js/hls.min.js"></script>
 
-                            <script type="text/javascript">
-    function isMobile() {
-     if( navigator.userAgent.match(/Android/i)
-     || navigator.userAgent.match(/webOS/i)
-     || navigator.userAgent.match(/iPhone/i)
-     || navigator.userAgent.match(/iPad/i)
-     || navigator.userAgent.match(/iPod/i)
-     || navigator.userAgent.match(/BlackBerry/i)
-     || navigator.userAgent.match(/Windows Phone/i)
-     ){
-        return true;
-      }
-     else {
-        return false;
-      }
-    }
-    jwplayer("video-hls").setup({
-    width: "100%",
-    height : "400px",
-    androidhls:true,
-    playlist: [
-    {
-        file :'https://v-xem.mkocdn.com/289a790c32db22ed2f5f927c1226183f1498769715/v.xem.sb/data/video/contents/2016/11/16/029/1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.mp4/playlist.m3u8',
-        type: 'hls',
-        type: isMobile() ? 'm3u8' : 'hlsjs',
-        image: "https://i-xem.mkocdn.com/i.xem.sb/data/video/thumbnails/2016/11/16/029/thumbnail-1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.png",
-    }],
-    primary : "html5",
-    "hlshtml" : true
-});
-</script>
+    <script type="text/javascript">
+            $(document).ready(function(){
+        		$("play").click(function(){
+              console("play");
+        			enterUrl();
+        		});
+        	});
+          (function($) {
+            $.fn.onEnter = function(func) {
+              this.bind('keypress', function(e) {
+                if (e.keyCode == 13) func.apply(this, [e]);
+              });
+              return this;
+            };
+            })(jQuery);
+            $('#file').keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                enterUrl();
+            }
+            });
+          function enterUrl(){
+            var value = document.getElementById('file').value;
+            if(value == '') return;
+            changeViewUrl(value);
+          }
+          function isMobile() {
+           if( navigator.userAgent.match(/Android/i)
+           || navigator.userAgent.match(/webOS/i)
+           || navigator.userAgent.match(/iPhone/i)
+           || navigator.userAgent.match(/iPad/i)
+           || navigator.userAgent.match(/iPod/i)
+           || navigator.userAgent.match(/BlackBerry/i)
+           || navigator.userAgent.match(/Windows Phone/i)
+           ){
+              return true;
+            }
+           else {
+              return false;
+            }
+          }
+          function changeViewUrl(url){
+                jwplayer("video-hls").setup({
+                width: "100%",
+                height : "400px",
+                androidhls:true,
+                playlist: [
+                {
+                    file : url,
+                    type: 'hls',
+                    type: isMobile() ? 'm3u8' : 'hlsjs',
+                    image: "https://i-xem.mkocdn.com/i.xem.sb/data/video/thumbnails/2016/11/16/029/thumbnail-1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.png",
+                }],
+                primary : "html5",
+                "hlshtml" : true
+            });
+          }
+          changeViewUrl("https://v-xem.mkocdn.com/289a790c32db22ed2f5f927c1226183f1498769715/v.xem.sb/data/video/contents/2016/11/16/029/1479279429_F3961290CC0C9C5F4F6DDE4CC31E4C3A.mp4/playlist.m3u8");
+    </script>
 
 </body>
 
